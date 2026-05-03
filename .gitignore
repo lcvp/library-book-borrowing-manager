@@ -1,3 +1,10 @@
+# Ignore the build directory and all its contents
+build/
+
+# Ignore IDE specific generated files
+compile_commands.json
+.vscode/
+
 # Prerequisites
 *.d
 
