@@ -22,7 +22,7 @@
 namespace library_book_borrowing_manager::domain {
 
 class Address {
-public:
+ public:
   Address(std::string building_number, std::string street, std::string city,
           std::string postal_code);
 
@@ -38,13 +38,13 @@ public:
 
   std::string GetFullAddress() const;
 
-private:
+ private:
   std::string building_number_;
   std::string street_;
   std::string city_;
   std::string postal_code_;
 };
 
-} // namespace library_book_borrowing_manager::domain
+}  // namespace library_book_borrowing_manager::domain
 
-#endif // LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_ADDRESS_H_
+#endif  // LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_ADDRESS_H_

@@ -23,7 +23,7 @@
 namespace library_book_borrowing_manager::domain {
 
 class Title {
-public:
+ public:
   virtual ~Title();
 
   std::string id() const;
@@ -40,7 +40,7 @@ public:
 
   virtual std::string GetApaCitation() const = 0;
 
-protected:
+ protected:
   Title(std::string id, std::string name, std::string description,
         std::string author, std::string publisher);
 
@@ -51,6 +51,6 @@ protected:
   std::string publisher_;
 };
 
-} // namespace library_book_borrowing_manager::domain
+}  // namespace library_book_borrowing_manager::domain
 
-#endif // LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_TITLE_H_
+#endif  // LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_TITLE_H_
