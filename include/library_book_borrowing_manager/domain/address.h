@@ -23,6 +23,9 @@ namespace library_book_borrowing_manager::domain {
 
 class Address {
 public:
+  Address(std::string building_number, std::string street, std::string city,
+          std::string postal_code);
+
   std::string building_number() const;
   std::string street() const;
   std::string city() const;
