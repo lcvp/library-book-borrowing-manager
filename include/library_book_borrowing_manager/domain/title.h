@@ -24,6 +24,8 @@ namespace library_book_borrowing_manager::domain {
 
 class Title {
 public:
+  virtual ~Title();
+
   std::string id() const;
   std::string name() const;
   std::string description() const;
@@ -36,9 +38,12 @@ public:
   void set_author(std::string author);
   void set_publisher(std::string publisher);
 
-  std::string GetApaCitation() const;
+  virtual std::string GetApaCitation() const = 0;
 
-private:
+protected:
+  Title(std::string id, std::string name, std::string description,
+        std::string author, std::string publisher);
+
   std::string id_;
   std::string name_;
   std::string description_;
