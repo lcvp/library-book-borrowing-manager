@@ -16,7 +16,9 @@ set(DOMAIN_SOURCES
     src/domain/address.cpp
     src/domain/book.cpp
     src/domain/borrow_record.cpp
+    src/domain/citizen_id.cpp
     src/domain/customer.cpp
+    src/domain/email.cpp
     src/domain/item.cpp
     src/domain/journal.cpp
     src/domain/magazine.cpp
