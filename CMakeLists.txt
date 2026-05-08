@@ -20,6 +20,7 @@ set(DOMAIN_SOURCES
     src/domain/item.cpp
     src/domain/journal.cpp
     src/domain/magazine.cpp
+    src/domain/periodical.cpp
     src/domain/thesis.cpp
     src/domain/title.cpp
 )
