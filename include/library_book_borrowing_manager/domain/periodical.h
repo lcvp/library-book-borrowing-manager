@@ -39,7 +39,7 @@ class Periodical : public Title {
   static bool IsValidISSN(std::string issn);
   std::string GetApaCitation() const override = 0;
 
- private:
+ protected:
   std::string issn_;
   std::string volume_;
   std::string issue_number_;
