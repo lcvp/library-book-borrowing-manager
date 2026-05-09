@@ -31,7 +31,7 @@ set(DOMAIN_SOURCES
 )
 
 set(PRESENTATION_SOURCES
-    src/presentation/ui.cpp
+    src/presentation/user_interface.cpp
 )
 
 set(SERVICE_SOURCES
