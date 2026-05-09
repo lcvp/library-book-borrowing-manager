@@ -11,7 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the Customer class for Library Book Borrowing Manager.
+// -----------------------------------------------------------------------------
+// customer.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the Customer class for Library Book Borrowing
+// Manager.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_CUSTOMER_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_CUSTOMER_H_

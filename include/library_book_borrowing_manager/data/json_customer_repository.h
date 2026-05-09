@@ -11,8 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the JsonCustomerRepository for retrieving and storing customer data
-// with Json.
+// -----------------------------------------------------------------------------
+// json_customer_repository.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the JsonCustomerRepository class for retrieving and
+// storing customer data with Json.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DATA_JSON_CUSTOMER_REPOSITORY_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DATA_JSON_CUSTOMER_REPOSITORY_H_

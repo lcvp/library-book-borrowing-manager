@@ -11,7 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the CitizenId class. Intended to be used by the Customer class.
+// -----------------------------------------------------------------------------
+// citizen_id.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the CitizenId class which is intended to be used by
+// the Customer class.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_CITIZEN_ID_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_CITIZEN_ID_H_

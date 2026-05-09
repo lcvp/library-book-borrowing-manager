@@ -11,8 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the Item class. Each item object is a physical copy of a Title,
-// whereas a Title is the general "identity" of an Item.
+// -----------------------------------------------------------------------------
+// item.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the Item class. Each item object is a physical copy
+// of a Title, whereas a Title is the general "identity" of an Item.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_ITEM_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_ITEM_H_

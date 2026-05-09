@@ -11,7 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the LibraryManager class. Manages the business logic of a library.
+// -----------------------------------------------------------------------------
+// library_manager.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the LibraryManager class which manages the business
+// logic of a library.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_SERVICE_LIBRARY_MANAGER_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_SERVICE_LIBRARY_MANAGER_H_

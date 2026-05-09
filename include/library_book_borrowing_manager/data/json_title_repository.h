@@ -11,8 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the JsonTitleRepository class for retrieving and storing Title data
-// with Json.
+// -----------------------------------------------------------------------------
+// json_title_repository.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the JsonTitleRepository class for retrieving and
+// storing Title data with Json.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DATA_JSON_TITLE_REPOSITORY_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DATA_JSON_TITLE_REPOSITORY_H_

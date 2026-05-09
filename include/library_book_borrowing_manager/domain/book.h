@@ -11,7 +11,11 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the Book class. Inherits from Title.
+// -----------------------------------------------------------------------------
+// book.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the Book class which inherits from Title.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_BOOK_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_BOOK_H_
@@ -24,9 +28,8 @@ namespace library_book_borrowing_manager::domain {
 
 class Book : public Title {
  public:
-  Book(std::string id, std::string name,
-       std::string description, std::string author,
-       std::string publisher, std::string isbn,
+  Book(std::string id, std::string name, std::string description,
+       std::string author, std::string publisher, std::string isbn,
        std::string edition);
 
   std::string isbn() const;

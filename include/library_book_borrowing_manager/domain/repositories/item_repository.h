@@ -11,8 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the ItemRepository class. Acts as an interface for the
-// corresponding data class.
+// -----------------------------------------------------------------------------
+// item_repository.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the ItemRepository class which acts as an interface
+// for the corresponding data class.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_REPOSITORIES_ITEM_REPOSITORY_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_REPOSITORIES_ITEM_REPOSITORY_H_

@@ -11,8 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the Address class for Library Book Borrowing Manager. Intended to be
-// used by the Customer class.
+// -----------------------------------------------------------------------------
+// address.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the Address class for Library Book Borrowing Manager
+// which is intended to be used by the Customer class.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_ADDRESS_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_ADDRESS_H_

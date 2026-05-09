@@ -11,7 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Define the Periodical class. Intended to inherit from Title.
+// -----------------------------------------------------------------------------
+// periodical.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the Periodical class which is intended to inherit
+// from Title.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_PERIODICAL_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_PERIODICAL_H_

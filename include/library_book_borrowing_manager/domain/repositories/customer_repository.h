@@ -11,8 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the CustomerRepository class. Acts as an interface for the
-// corresponding data class.
+// -----------------------------------------------------------------------------
+// customer_repository.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the CustomerRepository class which acts as an
+// interface for the corresponding data class.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_REPOSITORIES_CUSTOMER_REPOSITORY_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_REPOSITORIES_CUSTOMER_REPOSITORY_H_

@@ -11,8 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the UserInterface class for Library Book Borrowing Manager for
-// displaying menu options and handling inputs.
+// -----------------------------------------------------------------------------
+// user_interface.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the UserInterface class for Library Book Borrowing
+// Manager for displaying menu options and handling inputs.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_USER_INTERFACE_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_USER_INTERFACE_H_

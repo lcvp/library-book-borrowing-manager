@@ -11,8 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the BorrowRecord class for Library Book Borrowing Manager. Intended
-// to be used by the Customer class.
+// -----------------------------------------------------------------------------
+// borrow_record.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the BorrowRecord class for Library Book Borrowing
+// Manager which is intended to be used by the Customer class.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_BORROW_RECORD_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_BORROW_RECORD_H_

@@ -11,9 +11,13 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the abstract Title class to be inherited by other classes. A Title is
-// the "indentity" (title, author, publisher) while an Item is a physical copy
-// of a Title.
+// -----------------------------------------------------------------------------
+// title.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the abstract Title class to be inherited by other
+// classes. A Title is the "indentity" (title, author, publisher) while an Item
+// is a physical copy of a Title.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_TITLE_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_TITLE_H_

@@ -11,8 +11,12 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the JsonItemRepository class for storing and retrieving Item data
-// with Json.
+// -----------------------------------------------------------------------------
+// json_item_repository.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the JsonItemRepository class for storing and
+// retrieving Item data with Json.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DATA_JSON_ITEM_REPOSITORY_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DATA_JSON_ITEM_REPOSITORY_H_
