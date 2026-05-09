@@ -13,6 +13,9 @@ set(DATA_SOURCES
 )
 
 set(DOMAIN_SOURCES
+    src/domain/repositories/customer_repository.cpp
+    src/domain/repositories/item_repository.cpp
+    src/domain/repositories/title_repository.cpp
     src/domain/address.cpp
     src/domain/book.cpp
     src/domain/borrow_record.cpp
