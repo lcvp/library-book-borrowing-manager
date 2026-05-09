@@ -21,8 +21,6 @@
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_SERVICE_LIBRARY_MANAGER_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_SERVICE_LIBRARY_MANAGER_H_
 
-#include <memory>
-
 #include "library_book_borrowing_manager/domain/repositories/customer_repository.h"
 #include "library_book_borrowing_manager/domain/repositories/item_repository.h"
 #include "library_book_borrowing_manager/domain/repositories/title_repository.h"
@@ -31,21 +29,18 @@ namespace library_book_borrowing_manager::service {
 
 class LibraryManager {
  public:
-  LibraryManager(
-      std::unique_ptr<domain::repositories::CustomerRepository>
-          customer_repository,
-      std::unique_ptr<domain::repositories::ItemRepository> item_repository,
-      std::unique_ptr<domain::repositories::TitleRepository> title_repository);
+  LibraryManager(domain::repositories::CustomerRepository* customer_repository,
+                 domain::repositories::ItemRepository* item_repository,
+                 domain::repositories::TitleRepository* title_repository);
 
   domain::repositories::CustomerRepository* customer_repository() const;
   domain::repositories::ItemRepository* item_repository() const;
   domain::repositories::TitleRepository* title_repository() const;
 
  private:
-  std::unique_ptr<domain::repositories::CustomerRepository>
-      customer_repository_;
-  std::unique_ptr<domain::repositories::ItemRepository> item_repository_;
-  std::unique_ptr<domain::repositories::TitleRepository> title_repository_;
+  domain::repositories::CustomerRepository* customer_repository_;
+  domain::repositories::ItemRepository* item_repository_;
+  domain::repositories::TitleRepository* title_repository_;
 };
 
 }  // namespace library_book_borrowing_manager::service
