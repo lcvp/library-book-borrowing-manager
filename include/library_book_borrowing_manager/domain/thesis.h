@@ -11,7 +11,11 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 //
-// Defines the thesis class. Inherits from Title.
+// -----------------------------------------------------------------------------
+// thesis.h
+// -----------------------------------------------------------------------------
+//
+// This header file defines the Thesis class which inherits from Title.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_THESIS_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_THESIS_H_
@@ -29,15 +33,15 @@ class Thesis : public Title {
          std::string degree_level, int defense_year,
          std::string supervisor_name);
 
-  void set_university(std::string university);
-  void set_degree_level(std::string degree_level);
-  void set_defense_year(int defense_year);
-  void set_supervisor_name(std::string supervisor_name);
-
   std::string university() const;
   std::string degree_level() const;
   int defense_year() const;
   std::string supervisor_name() const;
+
+  void set_university(std::string university);
+  void set_degree_level(std::string degree_level);
+  void set_defense_year(int defense_year);
+  void set_supervisor_name(std::string supervisor_name);
 
   std::string GetApaCitation() const override;
 
@@ -50,4 +54,4 @@ class Thesis : public Title {
 
 }  // namespace library_book_borrowing_manager::domain
 
-#endif  // LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_THESIS_H_F
+#endif  // LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_THESIS_H_
