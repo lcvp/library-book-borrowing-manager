@@ -1,8 +1,7 @@
-# Ignore the build directory and all its contents
+# The build/ directory and all its contents
 build/
 
-# Ignore IDE specific generated files
-compile_commands.json
+# IDE specific generated files
 .vscode/
 
 # Prerequisites
