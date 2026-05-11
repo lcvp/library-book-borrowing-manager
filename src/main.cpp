@@ -27,9 +27,9 @@
 #include "library_book_borrowing_manager/service/library_manager.h"
 
 int main() {
-  const std::string kCustomerFilePath = "saves/customers.json";
-  const std::string kItemFilePath = "saves/items.json";
-  const std::string kTitleFilePath = "saves/title.json";
+  const std::string kCustomerFilePath = "library_data/customers.json";
+  const std::string kItemFilePath = "library_data/items.json";
+  const std::string kTitleFilePath = "library_data/title.json";
 
   library_book_borrowing_manager::data::JsonCustomerRepository
       customer_repository(kCustomerFilePath);
