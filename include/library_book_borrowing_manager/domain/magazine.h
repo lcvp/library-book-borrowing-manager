@@ -30,7 +30,8 @@ namespace library_book_borrowing_manager::domain {
 class Magazine : public Periodical {
  public:
   Magazine(std::string id, std::string name, std::string description,
-           std::string author, std::string publisher, std::string issn,
+           std::string author, std::string publisher, int publication_year,
+           std::string doi, std::string issn, std::string publication_name,
            std::string volume, std::string issue_number, std::string category);
 
   std::string category() const;

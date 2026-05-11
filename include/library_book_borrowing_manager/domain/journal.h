@@ -30,7 +30,8 @@ namespace library_book_borrowing_manager::domain {
 class Journal : public Periodical {
  public:
   Journal(std::string id, std::string name, std::string description,
-          std::string author, std::string publisher, std::string issn,
+          std::string author, std::string publisher, int publication_year,
+          std::string doi, std::string issn, std::string publication_name,
           std::string volume, std::string issue_number,
           std::string field_of_study, bool is_peer_reviewed);
 

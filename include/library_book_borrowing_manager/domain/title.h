@@ -35,24 +35,31 @@ class Title {
   std::string description() const;
   std::string author() const;
   std::string publisher() const;
+  int publication_year() const;
+  std::string doi() const;
 
   void set_id(std::string id);
   void set_name(std::string name);
   void set_description(std::string description);
   void set_author(std::string author);
   void set_publisher(std::string publisher);
+  void set_publication_year(int publication_year);
+  void set_doi(std::string doi);
 
   virtual std::string GetApaCitation() const = 0;
 
  protected:
   Title(std::string id, std::string name, std::string description,
-        std::string author, std::string publisher);
+        std::string author, std::string publisher, int publication_year,
+        std::string doi);
 
   std::string id_;
   std::string name_;
   std::string description_;
   std::string author_;
   std::string publisher_;
+  int publication_year_;
+  std::string doi_;
 };
 
 }  // namespace library_book_borrowing_manager::domain

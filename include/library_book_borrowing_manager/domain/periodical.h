@@ -30,14 +30,17 @@ namespace library_book_borrowing_manager::domain {
 class Periodical : public Title {
  public:
   Periodical(std::string id, std::string name, std::string description,
-             std::string author, std::string publisher, std::string issn,
+             std::string author, std::string publisher, int publication_year,
+             std::string doi, std::string issn, std::string publication_name,
              std::string volume, std::string issue_number);
 
   std::string issn() const;
+  std::string publication_name() const;
   std::string volume() const;
   std::string issue_number() const;
 
   void set_issn(std::string issn);
+  void set_publication_name(std::string issn);
   void set_volume(std::string volume);
   void set_issue_number(std::string issue_number);
 
@@ -46,6 +49,7 @@ class Periodical : public Title {
 
  protected:
   std::string issn_;
+  std::string publication_name_;
   std::string volume_;
   std::string issue_number_;
 };

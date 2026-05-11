@@ -29,8 +29,8 @@ namespace library_book_borrowing_manager::domain {
 class Book : public Title {
  public:
   Book(std::string id, std::string name, std::string description,
-       std::string author, std::string publisher, std::string isbn,
-       std::string edition);
+       std::string author, std::string publisher, int publication_year,
+       std::string doi, std::string isbn, std::string edition);
 
   std::string isbn() const;
   std::string edition() const;

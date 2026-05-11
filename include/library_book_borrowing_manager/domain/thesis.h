@@ -29,9 +29,9 @@ namespace library_book_borrowing_manager::domain {
 class Thesis : public Title {
  public:
   Thesis(std::string id, std::string name, std::string description,
-         std::string author, std::string publisher, std::string university,
-         std::string degree_level, int defense_year,
-         std::string supervisor_name);
+         std::string author, std::string publisher, int publication_year,
+         std::string doi, std::string university, std::string degree_level,
+         int defense_year, std::string supervisor_name);
 
   std::string university() const;
   std::string degree_level() const;
