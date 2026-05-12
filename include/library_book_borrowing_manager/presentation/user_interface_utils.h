@@ -15,4 +15,29 @@
 // user_interface_utils.h
 // -----------------------------------------------------------------------------
 //
-//
+// This header file defines a collection of user interface helper methods.
+
+#ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_USER_INTERFACE_UTILS_H_
+#define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_USER_INTERFACE_UTILS_H_
+
+#include <string>
+
+namespace library_book_borrowing_manager::presentation {
+
+void ClearTerminal();
+
+std::string PromptForString(std::string prompt_message);
+
+int PromptForInt(std::string prompt_message);
+
+bool PromptForConfirmation(std::string prompt_message);
+
+void PrintHeader(std::string title);
+
+void PrintError(std::string error_message);
+
+void PrintSuccess(std::string success_message);
+
+}  // namespace library_book_borrowing_manager::presentation
+
+#endif  // LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_USER_INTERFACE_UTILS_H_
