@@ -29,7 +29,7 @@ class Email {
  public:
   explicit Email(std::string email_address);
 
-  std::string email_adress() const;
+  std::string email_address() const;
 
   void set_email_address(std::string email_address);
 
