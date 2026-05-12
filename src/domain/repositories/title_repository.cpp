@@ -10,3 +10,11 @@
 //
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
+
+#include "library_book_borrowing_manager/domain/repositories/title_repository.h"
+
+namespace library_book_borrowing_manager::domain::repositories {
+
+TitleRepository::~TitleRepository() = default;
+
+}  // namespace library_book_borrowing_manager::domain::repositories
