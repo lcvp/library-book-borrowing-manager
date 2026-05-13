@@ -10,3 +10,36 @@
 //
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
+
+#include "library_book_borrowing_manager/domain/citizen_id.h"
+
+#include <cctype>
+
+namespace library_book_borrowing_manager::domain {
+
+CitizenId::CitizenId(std::string id)
+    : id_(id) {}
+
+std::string CitizenId::id() const {
+  return id_;
+}
+
+void CitizenId::set_id(std::string id) {
+  id_ = id;
+}
+
+bool CitizenId::IsValid(std::string id) {
+  if (id.length() != 12) {
+    return false;
+  }
+
+  for (char c : id) {
+    if (!std::isdigit(c)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+}  // namespace library_book_borrowing_manager::domain
