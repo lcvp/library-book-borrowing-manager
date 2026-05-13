@@ -20,7 +20,9 @@
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_USER_INTERFACE_UTILS_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_USER_INTERFACE_UTILS_H_
 
+#include <map>
 #include <string>
+#include <vector>
 
 namespace library_book_borrowing_manager::presentation {
 
@@ -37,6 +39,16 @@ void PrintHeader(std::string title);
 void PrintError(std::string error_message);
 
 void PrintSuccess(std::string success_message);
+
+void PrintDivider();
+
+void PrintList(std::vector<std::string> entries);
+
+void PrintList(std::map<std::string, std::string> entries);
+
+void PrintList(std::map<int, std::string> entries);
+
+int GetTerminalLength();
 
 }  // namespace library_book_borrowing_manager::presentation
 

@@ -10,3 +10,80 @@
 //
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
+
+#include "library_book_borrowing_manager/presentation/user_interface_utils.h"
+
+#include <iostream>
+#include <map>
+#include <string>
+#include <vector>
+
+namespace library_book_borrowing_manager::presentation {
+
+void ClearTerminal() { std::cout << "\033[2J\033[H" << std::flush; }
+
+std::string PromptForString(std::string prompt_message) {
+  std::string input = "";
+  std::cout << prompt_message;
+  std::getline(std::cin, input);
+  return input;
+}
+
+int PromptForInt(std::string prompt_message) {
+  std::string input = "";
+  std::cout << prompt_message;
+  std::getline(std::cin, input);
+
+  return std::stoi(input);
+}
+
+bool PromptForConfirmation(std::string prompt_message) {
+  std::string input = "";
+  std::cout << prompt_message;
+  std::getline(std::cin, input);
+
+  bool is_confirmed = ((input == "y") || (input == "Y"));
+
+  return is_confirmed;
+}
+
+void PrintHeader(std::string title) {
+  PrintDivider();
+  std::cout << "\033[1m" << title << "\033[0m\n";
+  PrintDivider();
+}
+
+void PrintError(std::string error_message) {
+  std::cerr << "\033[31m[ERROR]\033[0m " << error_message << "\n";
+}
+
+void PrintSuccess(std::string success_message) {
+  std::cout << "\033[32m[SUCCESS]\033[0m " << success_message << "\n";
+}
+
+void PrintDivider() {
+  int length = GetTerminalLength();
+  std::cout << std::string(length, '-') << "\n";
+}
+
+void PrintList(std::vector<std::string> entries) {
+  for (std::string entry : entries) {
+    std::cout << entry << std::endl;
+  }
+}
+
+void PrintList(std::map<std::string, std::string> entries) {
+  for (const auto& entry : entries) {
+    std::cout << entry.first << ": " << entry.second << "\n";
+  }
+}
+
+void PrintList(std::map<int, std::string> entries) {
+  for (const auto& entry : entries) {
+    std::cout << entry.first << ": " << entry.second << "\n";
+  }
+}
+
+int GetTerminalLength() { return 80; }
+
+}  // namespace library_book_borrowing_manager::presentation
