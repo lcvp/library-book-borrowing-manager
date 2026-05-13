@@ -13,20 +13,15 @@
 
 #include "library_book_borrowing_manager/domain/citizen_id.h"
 
-#include <cctype>
+#include <string>
 
 namespace library_book_borrowing_manager::domain {
 
-CitizenId::CitizenId(std::string id)
-    : id_(id) {}
+CitizenId::CitizenId(std::string id) : id_(id) {}
 
-std::string CitizenId::id() const {
-  return id_;
-}
+std::string CitizenId::id() const { return id_; }
 
-void CitizenId::set_id(std::string id) {
-  id_ = id;
-}
+void CitizenId::set_id(std::string id) { id_ = id; }
 
 bool CitizenId::IsValid(std::string id) {
   if (id.length() != 12) {
@@ -37,6 +32,14 @@ bool CitizenId::IsValid(std::string id) {
     if (!std::isdigit(c)) {
       return false;
     }
+  }
+
+  if (id.substr(0, 3) == "000") {
+    return false;
+  }
+
+  if (id.substr(6, 6) == "000000") {
+    return false;
   }
 
   return true;
