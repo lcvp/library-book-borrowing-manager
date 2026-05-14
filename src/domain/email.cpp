@@ -11,19 +11,17 @@
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
 
-
 #include "library_book_borrowing_manager/domain/email.h"
 
 #include <regex>
 #include <stdexcept>
 #include <string>
-#include <utility>
 
 namespace library_book_borrowing_manager::domain {
 
 Email::Email(std::string email_address) {
   if (!IsValid(email_address)) {
-    throw std::invalid_argument("Invalid email address format.");
+    throw std::invalid_argument("Invalid email address.");
   }
   email_address_ = email_address;
 }
@@ -32,18 +30,15 @@ std::string Email::email_address() const { return email_address_; }
 
 void Email::set_email_address(std::string email_address) {
   if (!IsValid(email_address)) {
-    throw std::invalid_argument("Invalid email address format.");
+    throw std::invalid_argument("Invalid email address.");
   }
   email_address_ = email_address;
 }
 
 bool Email::IsValid(std::string email_address) {
-  const std::regex pattern(
+  const std::regex kEmailAddressPattern(
       R"(^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)");
-  return std::regex_match(email_address, pattern);
+  return std::regex_match(email_address, kEmailAddressPattern);
 }
 
 }  // namespace library_book_borrowing_manager::domain
-
-
-  
