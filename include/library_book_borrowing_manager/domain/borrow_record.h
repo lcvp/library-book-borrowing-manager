@@ -35,7 +35,7 @@ class BorrowRecord {
 
   BorrowRecord(std::string id, std::chrono::system_clock::time_point start_date,
                std::chrono::system_clock::time_point due_date,
-               std::chrono::system_clock::time_point return_date,
+               std::optional<std::chrono::system_clock::time_point> return_date,
                const Item* item);
 
   std::string id() const;

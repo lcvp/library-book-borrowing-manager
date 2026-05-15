@@ -19,11 +19,11 @@
 
 namespace library_book_borrowing_manager::domain {
 
-BorrowRecord::BorrowRecord(std::string id,
-                           std::chrono::system_clock::time_point start_date,
-                           std::chrono::system_clock::time_point due_date,
-                           std::chrono::system_clock::time_point return_date,
-                           const Item* item)
+BorrowRecord::BorrowRecord(
+    std::string id, std::chrono::system_clock::time_point start_date,
+    std::chrono::system_clock::time_point due_date,
+    std::optional<std::chrono::system_clock::time_point> return_date,
+    const Item* item)
     : id_(id),
       start_date_(start_date),
       due_date_(due_date),
@@ -89,6 +89,10 @@ void BorrowRecord::ExtendLoan(std::chrono::system_clock::time_point to_date) {
 }
 
 int BorrowRecord::GetDaysOverdue() const {
+  if (return_date().has_value()) {
+    return 0;
+  }
+
   std::chrono::system_clock::time_point current_date =
       std::chrono::system_clock::now();
 
