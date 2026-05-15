@@ -13,6 +13,8 @@
 
 #include "library_book_borrowing_manager/domain/borrow_record.h"
 
+#include <chrono>
+#include <optional>
 #include <string>
 
 namespace library_book_borrowing_manager::domain {
@@ -38,7 +40,8 @@ std::chrono::system_clock::time_point BorrowRecord::due_date() const {
   return due_date_;
 }
 
-std::chrono::system_clock::time_point BorrowRecord::return_date() const {
+std::optional<std::chrono::system_clock::time_point> BorrowRecord::return_date()
+    const {
   return return_date_;
 }
 
@@ -64,35 +67,36 @@ void BorrowRecord::set_return_date(
 void BorrowRecord::set_item(const Item* item) { item_ = item; }
 
 BorrowRecord::Status BorrowRecord::GetStatus() const {
-  auto now = std::chrono::system_clock::now();
+  std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
 
-  if (return_date_ != std::chrono::system_clock::time_point()) {
+  if (return_date().has_value()) {
     return Status::kReturned;
   }
 
-  if (now > due_date_) {
-    return Status::kOverdue;
+  if (now < due_date()) {
+    return Status::kActive;
   }
 
-  return Status::kActive;
+  return Status::kOverdue;
 }
 
 void BorrowRecord::Return(std::chrono::system_clock::time_point current_date) {
-  return_date_ = current_date;
+  set_return_date(current_date);
 }
 
 void BorrowRecord::ExtendLoan(std::chrono::system_clock::time_point to_date) {
-  due_date_ = to_date;
+  set_due_date(to_date);
 }
 
 int BorrowRecord::GetDaysOverdue() const {
-  auto current_date = std::chrono::system_clock::now();
+  std::chrono::system_clock::time_point current_date =
+      std::chrono::system_clock::now();
 
-  if (current_date <= due_date_) {
+  if (current_date <= due_date()) {
     return 0;
   }
 
-  auto overdue_duration = current_date - due_date_;
+  auto overdue_duration = current_date - due_date();
 
   return std::chrono::duration_cast<std::chrono::hours>(overdue_duration)
              .count() /
@@ -104,4 +108,5 @@ double BorrowRecord::CalculateLateFee() const {
 
   return GetDaysOverdue() * kFeePerDay;
 }
+
 }  // namespace library_book_borrowing_manager::domain

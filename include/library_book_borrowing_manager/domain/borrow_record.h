@@ -22,6 +22,7 @@
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_BORROW_RECORD_H_
 
 #include <chrono>
+#include <optional>
 #include <string>
 
 #include "library_book_borrowing_manager/domain/item.h"
@@ -40,7 +41,7 @@ class BorrowRecord {
   std::string id() const;
   std::chrono::system_clock::time_point start_date() const;
   std::chrono::system_clock::time_point due_date() const;
-  std::chrono::system_clock::time_point return_date() const;
+  std::optional<std::chrono::system_clock::time_point> return_date() const;
   const Item* item() const;
 
   void set_id(std::string id);
@@ -59,7 +60,7 @@ class BorrowRecord {
   std::string id_;
   std::chrono::system_clock::time_point start_date_;
   std::chrono::system_clock::time_point due_date_;
-  std::chrono::system_clock::time_point return_date_;
+  std::optional<std::chrono::system_clock::time_point> return_date_;
   const Item* item_;
 };
 
