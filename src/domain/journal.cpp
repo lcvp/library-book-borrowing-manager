@@ -13,46 +13,49 @@
 
 #include "library_book_borrowing_manager/domain/journal.h"
 
+#include <string>
+
+#include "library_book_borrowing_manager/domain/periodical.h"
+
 namespace library_book_borrowing_manager::domain {
 
-Journal::Journal(
-    std::string id, std::string name, std::string description,
-    std::string author, std::string publisher, int publication_year,
-    std::string doi, std::string issn,
-    std::string publication_name, std::string volume,
-    std::string issue_number, std::string field_of_study,
-    bool is_peer_reviewed)
-    : Periodical(id, name, description, author, publisher,
-                 publication_year, doi, issn,
-                 publication_name, volume, issue_number),
+Journal::Journal(std::string id, std::string name, std::string description,
+                 std::string author, std::string publisher,
+                 int publication_year, std::string doi, std::string issn,
+                 std::string publication_name, std::string volume,
+                 std::string issue_number, std::string field_of_study,
+                 bool is_peer_reviewed)
+    : Periodical(id, name, description, author, publisher, publication_year,
+                 doi, issn, publication_name, volume, issue_number),
       field_of_study_(field_of_study),
       is_peer_reviewed_(is_peer_reviewed) {}
 
-std::string Journal::field_of_study() const {
-  return field_of_study_;
-}
+std::string Journal::field_of_study() const { return field_of_study_; }
 
-bool Journal::is_peer_reviewed() const {
-  return is_peer_reviewed_;
-}
+bool Journal::is_peer_reviewed() const { return is_peer_reviewed_; }
 
-void Journal::set_field_of_study(
-    std::string field_of_study) {
+void Journal::set_field_of_study(std::string field_of_study) {
   field_of_study_ = field_of_study;
 }
 
-void Journal::set_is_peer_reviewed(
-    bool is_peer_reviewed) {
+void Journal::set_is_peer_reviewed(bool is_peer_reviewed) {
   is_peer_reviewed_ = is_peer_reviewed;
 }
 
 std::string Journal::GetApaCitation() const {
-  return author() + " (" +
-         std::to_string(publication_year()) +
-         "). " + name() + ". " +
-         publication_name() + ", " +
-         volume() + "(" +
-         issue_number() + ").";
+  std::string citation =
+      author() + " (" + std::to_string(publication_year()) + "). ";
+
+  citation += name() + ". ";
+
+  citation +=
+      publication_name() + ", " + volume() + "(" + issue_number() + ").";
+
+  if (!doi().empty()) {
+    citation += " https://doi.org/" + doi();
+  }
+
+  return citation;
 }
 
 }  // namespace library_book_borrowing_manager::domain
