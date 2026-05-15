@@ -14,16 +14,15 @@
 #include "library_book_borrowing_manager/domain/item.h"
 
 #include <string>
-#include <utility>
 
 namespace library_book_borrowing_manager::domain {
 
 Item::Item(std::string id, const Title* title, Condition condition,
            std::string shelf_location, bool is_available)
-    : id_(std::move(id)),
+    : id_(id),
       title_(title),
       condition_(condition),
-      shelf_location_(std::move(shelf_location)),
+      shelf_location_(shelf_location),
       is_available_(is_available) {}
 
 std::string Item::id() const { return id_; }
@@ -36,14 +35,14 @@ std::string Item::shelf_location() const { return shelf_location_; }
 
 bool Item::is_available() const { return is_available_; }
 
-void Item::set_id(std::string id) { id_ = std::move(id); }
+void Item::set_id(std::string id) { id_ = id; }
 
 void Item::set_title(const Title* title) { title_ = title; }
 
 void Item::set_condition(Condition condition) { condition_ = condition; }
 
 void Item::set_shelf_location(std::string shelf_location) {
-  shelf_location_ = std::move(shelf_location);
+  shelf_location_ = shelf_location;
 }
 
 void Item::set_is_available(bool is_available) { is_available_ = is_available; }
