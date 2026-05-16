@@ -6,9 +6,9 @@
 **Library Book Borrowing Manager** is a group project for CS-256.
 
 ## Info
-**Course**: Course  
-**Semester**: Semester  
-**Professor**: Professor  
+- **Course**: Course  
+- **Semester**: Semester  
+- **Professor**: Professor  
 
 ## Group Members
 - Student ID: ID
@@ -40,5 +40,10 @@
    .\build\Release\LibraryBookBorrowingManager.exe
    ```
 
+## Acknowledgements
+- This project uses [nlohmann/json][nlohmann-json], licensed under the [MIT License][third-party-notices]. 
+
 
 [cmake-download-link]: https://cmake.org/download/
+[nlohmann-json]: https://github.com/nlohmann/json
+[third-party-notices]: ./THIRD_PARTY_NOTICES.md
