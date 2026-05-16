@@ -46,6 +46,7 @@ class Customer {
   Address address() const;
   Email email() const;
   std::string phone_number() const;
+  std::vector<BorrowRecord> borrow_records() const;
 
   void set_id(std::string id);
   void set_citizen_id(CitizenId citizen_id);
@@ -55,10 +56,8 @@ class Customer {
   void set_email(Email email);
   void set_phone_number(std::string phone_number);
 
-  void Borrow(const Item& item,
-              std::chrono::system_clock::time_point current_date);
-  void Return(const Item& item,
-              std::chrono::system_clock::time_point current_date);
+  void Borrow(BorrowRecord new_record);
+  void Return(Item& item, std::chrono::system_clock::time_point current_date);
   double GetTotalLateFee() const;
   bool CanBorrow() const;
 

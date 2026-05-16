@@ -23,12 +23,14 @@ BorrowRecord::BorrowRecord(
     std::string id, std::chrono::system_clock::time_point start_date,
     std::chrono::system_clock::time_point due_date,
     std::optional<std::chrono::system_clock::time_point> return_date,
-    const Item* item)
+    Item* item)
     : id_(id),
       start_date_(start_date),
       due_date_(due_date),
       return_date_(return_date),
-      item_(item) {}
+      item_(item) {
+  item->set_is_available(false);
+}
 
 std::string BorrowRecord::id() const { return id_; }
 
@@ -45,7 +47,7 @@ std::optional<std::chrono::system_clock::time_point> BorrowRecord::return_date()
   return return_date_;
 }
 
-const Item* BorrowRecord::item() const { return item_; }
+Item* BorrowRecord::item() const { return item_; }
 
 void BorrowRecord::set_id(std::string id) { id_ = id; }
 
@@ -64,7 +66,7 @@ void BorrowRecord::set_return_date(
   return_date_ = return_date;
 }
 
-void BorrowRecord::set_item(const Item* item) { item_ = item; }
+void BorrowRecord::set_item(Item* item) { item_ = item; }
 
 BorrowRecord::Status BorrowRecord::GetStatus() const {
   std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
@@ -82,6 +84,7 @@ BorrowRecord::Status BorrowRecord::GetStatus() const {
 
 void BorrowRecord::Return(std::chrono::system_clock::time_point current_date) {
   set_return_date(current_date);
+  item()->set_is_available(true);
 }
 
 void BorrowRecord::ExtendLoan(std::chrono::system_clock::time_point to_date) {

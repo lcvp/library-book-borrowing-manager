@@ -36,19 +36,19 @@ class BorrowRecord {
   BorrowRecord(std::string id, std::chrono::system_clock::time_point start_date,
                std::chrono::system_clock::time_point due_date,
                std::optional<std::chrono::system_clock::time_point> return_date,
-               const Item* item);
+               Item* item);
 
   std::string id() const;
   std::chrono::system_clock::time_point start_date() const;
   std::chrono::system_clock::time_point due_date() const;
   std::optional<std::chrono::system_clock::time_point> return_date() const;
-  const Item* item() const;
+  Item* item() const;
 
   void set_id(std::string id);
   void set_start_date(std::chrono::system_clock::time_point start_date);
   void set_due_date(std::chrono::system_clock::time_point due_date);
   void set_return_date(std::chrono::system_clock::time_point return_date);
-  void set_item(const Item* item);
+  void set_item(Item* item);
 
   Status GetStatus() const;
   void Return(std::chrono::system_clock::time_point current_date);
@@ -61,7 +61,7 @@ class BorrowRecord {
   std::chrono::system_clock::time_point start_date_;
   std::chrono::system_clock::time_point due_date_;
   std::optional<std::chrono::system_clock::time_point> return_date_;
-  const Item* item_;
+  Item* item_;
 };
 
 }  // namespace library_book_borrowing_manager::domain
