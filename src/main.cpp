@@ -20,26 +20,18 @@
 
 #include <string>
 
-#include "library_book_borrowing_manager/data/json_customer_repository.h"
-#include "library_book_borrowing_manager/data/json_item_repository.h"
-#include "library_book_borrowing_manager/data/json_title_repository.h"
+#include "library_book_borrowing_manager/data/json_library_data_repository.h"
 #include "library_book_borrowing_manager/presentation/user_interface.h"
 #include "library_book_borrowing_manager/service/library_manager.h"
 
 int main() {
-  const std::string kCustomerFilePath = "library_data/customers.json";
-  const std::string kItemFilePath = "library_data/items.json";
-  const std::string kTitleFilePath = "library_data/title.json";
+  const std::string kSaveFilePath = "library_data.json";
 
-  library_book_borrowing_manager::data::JsonCustomerRepository
-      customer_repository(kCustomerFilePath);
-  library_book_borrowing_manager::data::JsonItemRepository item_repository(
-      kItemFilePath);
-  library_book_borrowing_manager::data::JsonTitleRepository title_repository(
-      kTitleFilePath);
+  library_book_borrowing_manager::data::JsonLibraryDataRepository library_data(
+      kSaveFilePath);
 
   library_book_borrowing_manager::service::LibraryManager library_manager(
-      &customer_repository, &item_repository, &title_repository);
+      &library_data);
 
   library_book_borrowing_manager::presentation::UserInterface user_interface(
       &library_manager);
