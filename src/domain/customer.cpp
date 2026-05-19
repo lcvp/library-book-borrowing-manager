@@ -82,7 +82,7 @@ void Customer::Borrow(BorrowRecord new_record) {
 
 void Customer::Return(Item& item,
                       std::chrono::system_clock::time_point current_date) {
-  for (BorrowRecord& record : borrow_records()) {
+  for (BorrowRecord& record : borrow_records_) {
     if (record.item()->id() == item.id() && !record.return_date().has_value()) {
       record.Return(current_date);
       break;
