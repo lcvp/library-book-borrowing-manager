@@ -31,9 +31,15 @@ class UserInterface {
 
   service::LibraryManager* manager() const;
 
-  void Start();
+  void Start() const;
 
  private:
+  void PrintMainMenu() const;
+  void PrintCheckoutItemsMenu() const;
+  void PrintInputItemsMenu() const;
+  void PrintCheckinItemsMenu() const;
+  void PrintRegisterUserMenu() const;
+
   service::LibraryManager* manager_;
 };
 

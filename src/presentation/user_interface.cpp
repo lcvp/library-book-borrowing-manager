@@ -10,3 +10,33 @@
 //
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
+
+#include "library_book_borrowing_manager/presentation/user_interface.h"
+
+#include <map>
+#include <string>
+
+#include "library_book_borrowing_manager/presentation/user_interface_utils.h"
+#include "library_book_borrowing_manager/service/library_manager.h"
+
+namespace library_book_borrowing_manager::presentation {
+
+UserInterface::UserInterface(service::LibraryManager* manager)
+    : manager_(manager) {};
+
+service::LibraryManager* UserInterface::manager() const { return manager_; }
+
+void UserInterface::Start() const { PrintMainMenu(); }
+
+void UserInterface::PrintMainMenu() const {
+  PrintHeader("Library Book Borrowing Manager");
+  std::map<std::string, std::string> options = {
+      {"1", "Checkout Items"}, {"2", "Checkin Items"},
+      {"3", "Register User"},  {"4", "Manage Borrow Records"},
+      {"5", "Manage Titles"},  {"6", "Manage Users"},
+      {"q", "Exit Program"}};
+  PrintList(options);
+  std::string user_input = PromptForString("Enter: ");
+}
+
+}  // namespace library_book_borrowing_manager::presentation
