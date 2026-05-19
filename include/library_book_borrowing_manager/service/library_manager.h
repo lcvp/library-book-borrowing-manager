@@ -21,26 +21,19 @@
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_SERVICE_LIBRARY_MANAGER_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_SERVICE_LIBRARY_MANAGER_H_
 
-#include "library_book_borrowing_manager/domain/repositories/customer_repository.h"
-#include "library_book_borrowing_manager/domain/repositories/item_repository.h"
-#include "library_book_borrowing_manager/domain/repositories/title_repository.h"
+#include "library_book_borrowing_manager/domain/repositories/library_data_repository.h"
 
 namespace library_book_borrowing_manager::service {
 
 class LibraryManager {
  public:
-  LibraryManager(domain::repositories::CustomerRepository* customer_repository,
-                 domain::repositories::ItemRepository* item_repository,
-                 domain::repositories::TitleRepository* title_repository);
+  LibraryManager(
+      domain::repositories::LibraryDataRepository* library_data_repository);
 
-  domain::repositories::CustomerRepository* customer_repository() const;
-  domain::repositories::ItemRepository* item_repository() const;
-  domain::repositories::TitleRepository* title_repository() const;
+  domain::repositories::LibraryDataRepository* library_data_repository() const;
 
  private:
-  domain::repositories::CustomerRepository* customer_repository_;
-  domain::repositories::ItemRepository* item_repository_;
-  domain::repositories::TitleRepository* title_repository_;
+  domain::repositories::LibraryDataRepository* library_data_repository_;
 };
 
 }  // namespace library_book_borrowing_manager::service

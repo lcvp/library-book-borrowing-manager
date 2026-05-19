@@ -10,3 +10,18 @@
 //
 // You should have received a copy of the GNU General Public License along with
 // this program. If not, see <https://www.gnu.org/licenses/>.
+
+#include "library_book_borrowing_manager/service/library_manager.h"
+
+namespace library_book_borrowing_manager::service {
+
+LibraryManager::LibraryManager(
+    domain::repositories::LibraryDataRepository* library_data_repository)
+    : library_data_repository_(library_data_repository) {}
+
+domain::repositories::LibraryDataRepository*
+LibraryManager::library_data_repository() const {
+  return library_data_repository_;
+}
+
+}  // namespace library_book_borrowing_manager::service
