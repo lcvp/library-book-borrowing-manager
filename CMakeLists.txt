@@ -14,15 +14,11 @@ FetchContent_Declare(json
 FetchContent_MakeAvailable(json)
 
 set(DATA_SOURCES
-    src/data/json_customer_repository.cpp
-    src/data/json_item_repository.cpp
-    src/data/json_title_repository.cpp
+    src/data/json_library_data_repository.cpp
 )
 
 set(DOMAIN_SOURCES
-    src/domain/repositories/customer_repository.cpp
-    src/domain/repositories/item_repository.cpp
-    src/domain/repositories/title_repository.cpp
+    src/domain/repositories/library_data_repository.cpp
     src/domain/address.cpp
     src/domain/book.cpp
     src/domain/borrow_record.cpp
