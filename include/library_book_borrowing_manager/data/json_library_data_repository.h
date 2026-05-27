@@ -22,6 +22,7 @@
 #define LIBRARY_BOOK_BORROWING_MANAGER_DATA_JSON_LIBRARY_DATA_REPOSITORY_H_
 
 #include <memory>
+#include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
 
@@ -60,8 +61,19 @@ class JsonLibraryDataRepository
   std::vector<domain::Customer> customers_;
   std::vector<domain::Item> items_;
   std::vector<std::unique_ptr<domain::Title>> titles_;
-  void LoadFromFile();
-  void SaveToFile();
+  void LoadAllFromFile();
+  void SaveAllToFile();
+
+  void LoadBooksFromFile(nlohmann::json& data);
+  void LoadJournalsFromFile(nlohmann::json& data);
+  void LoadMagazinesFromFile(nlohmann::json& data);
+  void LoadThesesFromFile(nlohmann::json& data);
+  void LoadItemsFromFile(nlohmann::json& data);
+  void LoadCustomersFromFile(nlohmann::json& data);
+
+  void SaveTitlesToJsonObject(nlohmann::json& data);
+  void SaveItemsToJsonObject(nlohmann::json& data);
+  void SaveCustomersToJsonObject(nlohmann::json& data);
 };
 
 }  // namespace library_book_borrowing_manager::data
