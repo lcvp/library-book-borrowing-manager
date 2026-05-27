@@ -36,7 +36,33 @@ void UserInterface::PrintMainMenu() const {
       {"5", "Manage Titles"},  {"6", "Manage Users"},
       {"q", "Exit Program"}};
   PrintList(options);
-  std::string user_input = PromptForString("Enter: ");
+
+  char user_input = PromptForString("Enter: ")[0];
+
+  switch (user_input) {
+    case '1':
+      PrintCheckoutItemsMenu();
+      break;
+    case '2':
+      PrintCheckinItemsMenu();
+      break;
+    case '3':
+      PrintRegisterUserMenu();
+      break;
+    case '4':
+      PrintManageBorrowRecordsMenu();
+      break;
+    case '5':
+      PrintManageTitlesMenu();
+      break;
+    case '6':
+      PrintManageUsersMenu();
+      break;
+    case 'q':
+      return;
+    default:
+      return;
+  }
 }
 
 }  // namespace library_book_borrowing_manager::presentation
