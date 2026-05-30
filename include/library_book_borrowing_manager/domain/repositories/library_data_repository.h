@@ -16,7 +16,7 @@
 // -----------------------------------------------------------------------------
 //
 // This header files declares the LibraryDataRepository class, intended to act
-// as a "central" source for the other repository classes.
+// as a repository interface for the service class LibraryManager.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_REPOSITORIES_LIBRARY_DATA_REPOSITORY_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DOMAIN_REPOSITORIES_LIBRARY_DATA_REPOSITORY_H_

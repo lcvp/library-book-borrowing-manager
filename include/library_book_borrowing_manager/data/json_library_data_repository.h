@@ -14,6 +14,7 @@
 // -----------------------------------------------------------------------------
 // json_library_data_repository.h
 // -----------------------------------------------------------------------------
+//
 // This header file declares the JsonLibraryDataRepository class which
 // implements the LibraryDataRepository interface. Intended to stores and
 // retrieve all library data with JSON.
