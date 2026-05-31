@@ -13,15 +13,37 @@
 
 #include "library_book_borrowing_manager/service/library_manager.h"
 
+#include <stdexcept>
+#include <string>
+#include <vector>
+
+#include "library_book_borrowing_manager/domain/repositories/library_data_repository.h"
+
 namespace library_book_borrowing_manager::service {
 
 LibraryManager::LibraryManager(
     domain::repositories::LibraryDataRepository* library_data_repository)
     : library_data_repository_(library_data_repository) {}
 
-domain::repositories::LibraryDataRepository*
-LibraryManager::library_data_repository() const {
-  return library_data_repository_;
+void LibraryManager::set_library_date_repository(
+    domain::repositories::LibraryDataRepository* library_data_repository) {
+  library_data_repository_ = library_data_repository;
+}
+
+void LibraryManager::CheckoutItems(std::string customer_id,
+                                   std::vector<std::string> item_ids) {
+  // write this later
+  // holy shit
+}
+
+std::vector<std::string> LibraryManager::GetStringCustomerList() const {
+  // write this later
+  return {""};
+}
+
+std::vector<std::string> LibraryManager::GetStringItemList() const {
+  // write this alter
+  return {""};
 }
 
 }  // namespace library_book_borrowing_manager::service
