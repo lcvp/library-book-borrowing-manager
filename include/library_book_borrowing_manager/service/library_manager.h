@@ -21,6 +21,9 @@
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_SERVICE_LIBRARY_MANAGER_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_SERVICE_LIBRARY_MANAGER_H_
 
+#include <string>
+#include <vector>
+
 #include "library_book_borrowing_manager/domain/repositories/library_data_repository.h"
 
 namespace library_book_borrowing_manager::service {
@@ -30,7 +33,14 @@ class LibraryManager {
   LibraryManager(
       domain::repositories::LibraryDataRepository* library_data_repository);
 
-  domain::repositories::LibraryDataRepository* library_data_repository() const;
+  void set_library_date_repository(
+      domain::repositories::LibraryDataRepository* library_data_repository);
+
+  void CheckoutItems(std::string customer_id,
+                     std::vector<std::string> item_ids);
+
+  std::vector<std::string> GetStringCustomerList() const;
+  std::vector<std::string> GetStringItemList() const;
 
  private:
   domain::repositories::LibraryDataRepository* library_data_repository_;
