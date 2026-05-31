@@ -77,6 +77,10 @@ void Customer::set_phone_number(std::string phone_number) {
 }
 
 void Customer::Borrow(BorrowRecord new_record) {
+  if (!CanBorrow()) {
+    throw std::runtime_error(
+        "Customer cannot borrow due to having overdue items.");
+  }
   borrow_records_.push_back(new_record);
 }
 
