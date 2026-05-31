@@ -34,8 +34,20 @@ set(DOMAIN_SOURCES
 )
 
 set(PRESENTATION_SOURCES
-    src/presentation/user_interface.cpp
-    src/presentation/user_interface_utils.cpp
+    src/presentation/controllers/borrow_records_controller.cpp
+    src/presentation/controllers/checkin_controller.cpp
+    src/presentation/controllers/checkout_controller.cpp
+    src/presentation/controllers/customers_controller.cpp
+    src/presentation/controllers/main_menu_controller.cpp
+    src/presentation/controllers/register_customer_controller.cpp
+    src/presentation/controllers/titles_controller.cpp
+    src/presentation/views/borrow_records_view.cpp
+    src/presentation/views/checkin_view.cpp
+    src/presentation/views/checkout_view.cpp
+    src/presentation/views/console_view.cpp
+    src/presentation/views/customers_view.cpp
+    src/presentation/views/menu_view.cpp
+    src/presentation/views/titles_view.cpp
 )
 
 set(SERVICE_SOURCES
