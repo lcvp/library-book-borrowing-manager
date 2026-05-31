@@ -21,7 +21,19 @@
 #include <string>
 
 #include "library_book_borrowing_manager/data/json_library_data_repository.h"
-#include "library_book_borrowing_manager/presentation/user_interface.h"
+#include "library_book_borrowing_manager/presentation/controllers/borrow_records_controller.h"
+#include "library_book_borrowing_manager/presentation/controllers/checkin_controller.h"
+#include "library_book_borrowing_manager/presentation/controllers/checkout_controller.h"
+#include "library_book_borrowing_manager/presentation/controllers/customers_controller.h"
+#include "library_book_borrowing_manager/presentation/controllers/main_menu_controller.h"
+#include "library_book_borrowing_manager/presentation/controllers/register_customer_controller.h"
+#include "library_book_borrowing_manager/presentation/controllers/titles_controller.h"
+#include "library_book_borrowing_manager/presentation/views/borrow_records_view.h"
+#include "library_book_borrowing_manager/presentation/views/checkin_view.h"
+#include "library_book_borrowing_manager/presentation/views/checkout_view.h"
+#include "library_book_borrowing_manager/presentation/views/customers_view.h"
+#include "library_book_borrowing_manager/presentation/views/menu_view.h"
+#include "library_book_borrowing_manager/presentation/views/titles_view.h"
 #include "library_book_borrowing_manager/service/library_manager.h"
 
 int main() {
@@ -33,10 +45,41 @@ int main() {
   library_book_borrowing_manager::service::LibraryManager library_manager(
       &library_data);
 
-  library_book_borrowing_manager::presentation::UserInterface user_interface(
-      &library_manager);
+  // Initialize the views
+  library_book_borrowing_manager::presentation::views::BorrowRecordsView
+      borrow_records_view;
+  library_book_borrowing_manager::presentation::views::CheckinView checkin_view;
+  library_book_borrowing_manager::presentation::views::CheckoutView
+      checkout_view;
+  library_book_borrowing_manager::presentation::views::CustomersView
+      customers_view;
+  library_book_borrowing_manager::presentation::views::MenuView menu_view;
+  library_book_borrowing_manager::presentation::views::TitlesView titles_view;
 
-  user_interface.Start();
+  // Initialize the controllers
+  library_book_borrowing_manager::presentation::controllers::
+      BorrowRecordsController borrow_records_controller(library_manager,
+                                                        borrow_records_view);
+  library_book_borrowing_manager::presentation::controllers::CheckinController
+      checkin_controller(library_manager, checkin_view);
+  library_book_borrowing_manager::presentation::controllers::CheckoutController
+      checkout_controller(library_manager, checkout_view);
+  library_book_borrowing_manager::presentation::controllers::CustomersController
+      customers_controller(library_manager, customers_view);
+  library_book_borrowing_manager::presentation::controllers::
+      RegisterCustomerController register_customer_controller(library_manager,
+                                                              customers_view);
+  library_book_borrowing_manager::presentation::controllers::TitlesController
+      titles_controller(library_manager, titles_view);
+
+  // Initialize main menu controller
+  library_book_borrowing_manager::presentation::controllers::MainMenuController
+      main_menu_controller(menu_view, borrow_records_controller,
+                           checkin_controller, checkout_controller,
+                           customers_controller, register_customer_controller,
+                           titles_controller);
+
+  main_menu_controller.Run();
 
   return 0;
 }
