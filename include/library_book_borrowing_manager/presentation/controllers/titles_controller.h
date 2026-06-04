@@ -15,9 +15,8 @@
 // titles_controller.h
 // -----------------------------------------------------------------------------
 //
-// This header file declares the JsonLibraryDataRepository class which
-// implements the LibraryDataRepository interface. Intended to stores and
-// retrieve all library data with JSON.
+// This header file declares the TitlesController class for processing the
+// Manage Titles menu options.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_TITLES_CONTROLLER_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_TITLES_CONTROLLER_H_
@@ -38,6 +37,15 @@ class TitlesController {
   service::LibraryManager& library_manager_;
 
   views::TitlesView& titles_view_;
+
+  void AddTitle();
+  void EditTitle();
+  void DeleteTitle();
+
+  void ManageItems();
+  void AddItem();
+  void EditItem();
+  void DeleteItem();
 };
 
 }  // namespace library_book_borrowing_manager::presentation::controllers
