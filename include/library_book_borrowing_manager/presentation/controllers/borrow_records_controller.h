@@ -15,9 +15,8 @@
 // borrow_records_controller.h
 // -----------------------------------------------------------------------------
 //
-// This header file declares the JsonLibraryDataRepository class which
-// implements the LibraryDataRepository interface. Intended to stores and
-// retrieve all library data with JSON.
+// This header file declares the BorrowRecordsController class for processing
+// user input in the View Borrow Records menu.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_BORROW_RECORDS_CONTROLLER_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_BORROW_RECORDS_CONTROLLER_H_

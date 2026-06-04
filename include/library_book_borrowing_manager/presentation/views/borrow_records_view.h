@@ -15,9 +15,10 @@
 // borrow_records_view.h
 // -----------------------------------------------------------------------------
 //
-// This header file declares the JsonLibraryDataRepository class which
-// implements the LibraryDataRepository interface. Intended to stores and
-// retrieve all library data with JSON.
+// This header file declares the BorrowRecordsView class, which is in charge of
+// rendering the menus related to BorrowRecords.
+
+#include "library_book_borrowing_manager/domain/borrow_record.h"
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_VIEWS_BORROW_RECORDS_VIEWS_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_VIEWS_BORROW_RECORDS_VIEWS_H_
@@ -26,6 +27,18 @@ namespace library_book_borrowing_manager::presentation::views {
 
 class BorrowRecordsView {
  public:
+  char PrintBorrowRecordsOptions() const;
+
+  void PrintBorrowRecordList(
+      const std::vector<domain::BorrowRecord>& borrow_records) const;
+
+  std::string BorrowRecordToString(domain::BorrowRecord) const;
+  std::string ItemToString(domain::Item item) const;
+
+  std::vector<std::string> BorrowRecordListToString(
+      std::vector<domain::BorrowRecord> borrow_record_list) const;
+  std::vector<std::string> ItemListToString(
+      std::vector<domain::Item> item_list) const;
 };
 
 }  // namespace library_book_borrowing_manager::presentation::views

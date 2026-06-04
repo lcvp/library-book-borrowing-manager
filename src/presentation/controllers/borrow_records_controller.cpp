@@ -14,6 +14,7 @@
 #include "library_book_borrowing_manager/presentation/controllers/borrow_records_controller.h"
 
 #include "library_book_borrowing_manager/presentation/views/borrow_records_view.h"
+#include "library_book_borrowing_manager/presentation/views/console_view.h"
 #include "library_book_borrowing_manager/service/library_manager.h"
 
 namespace library_book_borrowing_manager::presentation::controllers {
@@ -24,6 +25,17 @@ BorrowRecordsController::BorrowRecordsController(
     : library_manager_(library_manager),
       borrow_records_view_(borrow_records_view) {}
 
-void BorrowRecordsController::Run() {}
+void BorrowRecordsController::Run() {
+  try {
+    views::ClearTerminal();
+    std::vector<domain::BorrowRecord> borrow_records_list =
+        library_manager_.GetBorrowRecordList();
+
+    borrow_records_view_.PrintBorrowRecordList(borrow_records_list);
+  } catch (const std::exception& exception) {
+    views::PrintError(exception.what());
+  }
+  views::WaitForInput("Press Enter to continue");
+}
 
 }  // namespace library_book_borrowing_manager::presentation::controllers
