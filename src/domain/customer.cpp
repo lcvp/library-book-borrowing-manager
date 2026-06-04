@@ -81,6 +81,7 @@ void Customer::Borrow(BorrowRecord new_record) {
     throw std::runtime_error(
         "Customer cannot borrow due to having overdue items.");
   }
+
   borrow_records_.push_back(new_record);
 }
 
@@ -88,6 +89,7 @@ void Customer::Return(Item& item,
                       std::chrono::system_clock::time_point current_date) {
   for (BorrowRecord& record : borrow_records_) {
     if (record.item()->id() == item.id() && !record.return_date().has_value()) {
+      record.item()->set_is_available(true);
       record.Return(current_date);
       break;
     }
