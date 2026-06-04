@@ -15,9 +15,8 @@
 // checkout_view.h
 // -----------------------------------------------------------------------------
 //
-// This header file declares the JsonLibraryDataRepository class which
-// implements the LibraryDataRepository interface. Intended to stores and
-// retrieve all library data with JSON.
+// This header file declares the CheckoutView class, which is in charge of
+// rendering menus related to the checkout service.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_VIEWS_CHECKOUT_VIEW_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_VIEWS_CHECKOUT_VIEW_H_
@@ -25,14 +24,26 @@
 #include <string>
 #include <vector>
 
+#include "library_book_borrowing_manager/domain/customer.h"
+#include "library_book_borrowing_manager/domain/item.h"
+
 namespace library_book_borrowing_manager::presentation::views {
 
 class CheckoutView {
  public:
-  std::string PrintCustomerList(std::vector<std::string> customer_list) const;
-  std::string PrintItemList(std::vector<std::string> item_list,
+  std::string PrintCustomerList(
+      std::vector<domain::Customer> customer_list) const;
+  std::string PrintItemList(std::vector<domain::Item> item_list,
                             std::string selected_customer_id,
                             std::vector<std::string> selected_item_ids) const;
+
+  std::string CustomerToString(domain::Customer customer) const;
+  std::string ItemToString(domain::Item item) const;
+
+  std::vector<std::string> CustomerListToString(
+      std::vector<domain::Customer> customer_list) const;
+  std::vector<std::string> ItemListToString(
+      std::vector<domain::Item> item_list) const;
 };
 
 }  // namespace library_book_borrowing_manager::presentation::views

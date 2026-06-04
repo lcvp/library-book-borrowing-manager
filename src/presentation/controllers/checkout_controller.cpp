@@ -15,6 +15,8 @@
 
 #include <string>
 
+#include "library_book_borrowing_manager/domain/customer.h"
+#include "library_book_borrowing_manager/domain/item.h"
 #include "library_book_borrowing_manager/presentation/views/checkout_view.h"
 #include "library_book_borrowing_manager/presentation/views/console_view.h"
 #include "library_book_borrowing_manager/service/library_manager.h"
@@ -28,9 +30,10 @@ CheckoutController::CheckoutController(service::LibraryManager& library_manager,
 void CheckoutController::Run() {
   try {
     views::ClearTerminal();
-    std::vector<std::string> customer_list =
-        library_manager_.GetStringCustomerList();
-    std::vector<std::string> item_list = library_manager_.GetStringItemList();
+    std::vector<domain::Customer> customer_list =
+        library_manager_.GetCustomerList();
+    std::vector<domain::Item> item_list =
+        GetAvailableItems(library_manager_.GetItemList());
 
     std::string selected_customer_id =
         checkout_view_.PrintCustomerList(customer_list);
@@ -55,4 +58,16 @@ void CheckoutController::Run() {
   views::WaitForInput("Press Enter to continue");
 }
 
+std::vector<domain::Item> CheckoutController::GetAvailableItems(
+    std::vector<domain::Item> items) const {
+  std::vector<domain::Item> available_items;
+
+  for (domain::Item item : items) {
+    if (item.is_available()) {
+      available_items.push_back(item);
+    }
+  }
+
+  return available_items;
+}
 }  // namespace library_book_borrowing_manager::presentation::controllers

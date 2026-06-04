@@ -15,13 +15,15 @@
 // checkin_controller.h
 // -----------------------------------------------------------------------------
 //
-// This header file declares the JsonLibraryDataRepository class which
-// implements the LibraryDataRepository interface. Intended to stores and
-// retrieve all library data with JSON.
+// This header file declares the CheckinController class for processing user
+// input in the Checkin Items menu.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_CHECKIN_CONTROLLER_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_CHECKIN_CONTROLLER_H_
 
+#include <vector>
+
+#include "library_book_borrowing_manager/domain/borrow_record.h"
 #include "library_book_borrowing_manager/presentation/views/checkin_view.h"
 #include "library_book_borrowing_manager/service/library_manager.h"
 
@@ -33,6 +35,8 @@ class CheckinController {
                     views::CheckinView& checkin_view);
 
   void Run();
+  std::vector<domain::BorrowRecord> GetUnreturnedBorrowRecords(
+      std::vector<domain::BorrowRecord> borrow_records) const;
 
  private:
   service::LibraryManager& library_manager_;

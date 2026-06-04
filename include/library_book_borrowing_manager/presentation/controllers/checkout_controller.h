@@ -15,13 +15,15 @@
 // checkout_controller.h
 // -----------------------------------------------------------------------------
 //
-// This header file declares the JsonLibraryDataRepository class which
-// implements the LibraryDataRepository interface. Intended to stores and
-// retrieve all library data with JSON.
+// This header file declares the CheckoutController class for processing user
+// input in the Checkout Items menu options.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_CHECKOUT_CONTROLLER_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_CHECKOUT_CONTROLLER_H_
 
+#include <vector>
+
+#include "library_book_borrowing_manager/domain/item.h"
 #include "library_book_borrowing_manager/presentation/views/checkout_view.h"
 #include "library_book_borrowing_manager/service/library_manager.h"
 
@@ -33,6 +35,8 @@ class CheckoutController {
                      views::CheckoutView& checkout_view);
 
   void Run();
+  std::vector<domain::Item> GetAvailableItems(
+      std::vector<domain::Item> items) const;
 
  private:
   service::LibraryManager& library_manager_;

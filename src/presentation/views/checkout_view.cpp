@@ -17,25 +17,27 @@
 #include <string>
 #include <vector>
 
+#include "library_book_borrowing_manager/domain/customer.h"
+#include "library_book_borrowing_manager/domain/item.h"
 #include "library_book_borrowing_manager/presentation/views/console_view.h"
 
 namespace library_book_borrowing_manager::presentation::views {
 
 std::string CheckoutView::PrintCustomerList(
-    std::vector<std::string> customer_list) const {
+    std::vector<domain::Customer> customer_list) const {
   PrintHeader("Checkout Items");
-  PrintList(customer_list);
+  PrintList(CustomerListToString(customer_list));
 
   PrintDivider();
-  std::string user_input = PromptForString("Enter user id: ");
+  std::string user_input = PromptForString("Enter customer id: ");
   return user_input;
 }
 
 std::string CheckoutView::PrintItemList(
-    std::vector<std::string> item_list, std::string selected_customer_id,
+    std::vector<domain::Item> item_list, std::string selected_customer_id,
     std::vector<std::string> selected_item_ids) const {
   PrintHeader("Checkout Items");
-  PrintList(item_list);
+  PrintList(ItemListToString(item_list));
 
   PrintDivider();
   std::cout << "Selected customer id: " << selected_customer_id << std::endl;
@@ -45,6 +47,78 @@ std::string CheckoutView::PrintItemList(
   PrintDivider();
   std::string user_input = PromptForString("Enter item id: ");
   return user_input;
+}
+
+std::string CheckoutView::CustomerToString(domain::Customer customer) const {
+  std::string customer_as_string;
+  customer_as_string += "Customer ID: " + customer.id();
+  customer_as_string += " | ";
+  customer_as_string += " Name: " + customer.name();
+  customer_as_string += ", CID: " + customer.citizen_id().id();
+  customer_as_string += ", DOB: " + TimePointToString(customer.date_of_birth());
+  customer_as_string += ", Email: " + customer.email().email_address();
+  return customer_as_string;
+}
+
+std::string CheckoutView::ItemToString(domain::Item item) const {
+  std::string item_as_string;
+
+  item_as_string += "Item ID: " + item.id();
+  item_as_string += " | ";
+
+  if (item.title() != nullptr) {
+    item_as_string += item.title()->GetApaCitation();
+  } else {
+    item_as_string += "Unknown Title";
+  }
+
+  item_as_string += " | Condition: ";
+
+  switch (item.condition()) {
+    case domain::Item::Condition::kFactoryNew:
+      item_as_string += "Factory New";
+      break;
+    case domain::Item::Condition::kMinimalWear:
+      item_as_string += "Minimal Wear";
+      break;
+    case domain::Item::Condition::kNormalWear:
+      item_as_string += "Normal Wear";
+      break;
+    case domain::Item::Condition::kWellWorn:
+      item_as_string += "Well Worn";
+      break;
+    case domain::Item::Condition::kDamaged:
+      item_as_string += "Damaged";
+      break;
+  }
+
+  item_as_string += " | Status: ";
+
+  if (item.is_available()) {
+    item_as_string += "Available";
+  } else {
+    item_as_string += "Borrowed";
+  }
+
+  return item_as_string;
+}
+
+std::vector<std::string> CheckoutView::CustomerListToString(
+    std::vector<domain::Customer> customer_list) const {
+  std::vector<std::string> string_customer_list;
+  for (domain::Customer customer : customer_list) {
+    string_customer_list.push_back(CustomerToString(customer));
+  }
+  return string_customer_list;
+}
+
+std::vector<std::string> CheckoutView::ItemListToString(
+    std::vector<domain::Item> item_list) const {
+  std::vector<std::string> string_item_list;
+  for (domain::Item item : item_list) {
+    string_item_list.push_back(ItemToString(item));
+  }
+  return string_item_list;
 }
 
 }  // namespace library_book_borrowing_manager::presentation::views
