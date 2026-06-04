@@ -21,7 +21,7 @@ char MenuView::PrintMainMenu() const {
   PrintHeader("Library Book Borrowing Manager");
   std::map<std::string, std::string> options = {
       {"1", "Checkout Items"},          {"2", "Checkin Items"},
-      {"3", "Register Customer"},       {"4", "Manage Borrow Records"},
+      {"3", "Register Customer"},       {"4", "View Borrow Records"},
       {"5", "Manage Titles"},           {"6", "Manage Customer"},
       {"Any other key", "Exit Program"}};
   PrintList(options);

@@ -15,9 +15,8 @@
 // main_menu_controller.h
 // -----------------------------------------------------------------------------
 //
-// This header file declares the JsonLibraryDataRepository class which
-// implements the LibraryDataRepository interface. Intended to stores and
-// retrieve all library data with JSON.
+// This header file declares the MainMenuController class, which process user
+// input in the main menu.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_MAIN_MENU_CONTROllER_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_MAIN_MENU_CONTROllER_H_

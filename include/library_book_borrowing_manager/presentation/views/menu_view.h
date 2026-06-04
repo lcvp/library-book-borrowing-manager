@@ -15,8 +15,7 @@
 // menu_view.h
 // -----------------------------------------------------------------------------
 //
-// This header file defines the UserInterface class for Library Book Borrowing
-// Manager for displaying menu options and handling inputs.
+// This header file declares the MenuView class, for rendering the main menu.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_VIEWS_MENU_VIEW_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_VIEWS_MENU_VIEW_H_
