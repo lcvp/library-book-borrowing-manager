@@ -1,3 +1,9 @@
+// Library Book Borrowing Manager
+
+
+
+
+//
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
 // Foundation, either version 3 of the License, or (at your option) any later
@@ -40,8 +46,8 @@ class LibraryDataRepository {
   virtual void Save(const Customer& customer) = 0;
   virtual void RemoveCustomer(std::string id) = 0;
 
-  virtual Item GetItemById(std::string id) const = 0;
-  virtual std::vector<Item> GetAllItems() const = 0;
+  virtual Item* GetItemById(std::string id) = 0;
+  virtual std::vector<Item*> GetAllItems() = 0;
   virtual void Save(const Item& item) = 0;
   virtual void RemoveItem(std::string id) = 0;
 

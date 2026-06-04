@@ -1,3 +1,9 @@
+// Library Book Borrowing Manager
+
+
+
+
+//
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
 // Foundation, either version 3 of the License, or (at your option) any later
@@ -86,17 +92,23 @@ void JsonLibraryDataRepository::RemoveCustomer(std::string id) {
   }
 }
 
-domain::Item JsonLibraryDataRepository::GetItemById(std::string id) const {
-  for (domain::Item item : items_) {
+domain::Item* JsonLibraryDataRepository::GetItemById(std::string id) {
+  for (domain::Item& item : items_) {
     if (item.id() == id) {
-      return item;
+      return &item;
     }
   }
   throw std::invalid_argument("Invalid Item ID.");
 }
 
-std::vector<domain::Item> JsonLibraryDataRepository::GetAllItems() const {
-  return items_;
+std::vector<domain::Item*> JsonLibraryDataRepository::GetAllItems() {
+  std::vector<domain::Item*> item_pointers;
+
+  for (domain::Item& item : items_) {
+    item_pointers.push_back(&item);
+  }
+
+  return item_pointers;
 }
 
 void JsonLibraryDataRepository::Save(const domain::Item& item) {
@@ -144,11 +156,78 @@ std::vector<const domain::Title*> JsonLibraryDataRepository::GetAllTitles()
 void JsonLibraryDataRepository::Save(std::unique_ptr<domain::Title> title) {
   for (std::unique_ptr<domain::Title>& existing_title : titles_) {
     if (existing_title->id() == title->id()) {
-      existing_title = std::move(title);
-      SaveAllToFile();
-      return;
+      existing_title->set_name(title->name());
+      existing_title->set_description(title->description());
+      existing_title->set_author(title->author());
+      existing_title->set_publisher(title->publisher());
+      existing_title->set_publication_year(title->publication_year());
+      existing_title->set_doi(title->doi());
+
+      domain::Book* existing_book =
+          dynamic_cast<domain::Book*>(existing_title.get());
+      domain::Book* new_book = dynamic_cast<domain::Book*>(title.get());
+
+      if (existing_book != nullptr && new_book != nullptr) {
+        existing_book->set_isbn(new_book->isbn());
+        existing_book->set_edition(new_book->edition());
+
+        SaveAllToFile();
+        return;
+      }
+
+      domain::Journal* existing_journal =
+          dynamic_cast<domain::Journal*>(existing_title.get());
+      domain::Journal* new_journal =
+          dynamic_cast<domain::Journal*>(title.get());
+
+      if (existing_journal != nullptr && new_journal != nullptr) {
+        existing_journal->set_issn(new_journal->issn());
+        existing_journal->set_publication_name(new_journal->publication_name());
+        existing_journal->set_volume(new_journal->volume());
+        existing_journal->set_issue_number(new_journal->issue_number());
+        existing_journal->set_field_of_study(new_journal->field_of_study());
+        existing_journal->set_is_peer_reviewed(new_journal->is_peer_reviewed());
+
+        SaveAllToFile();
+        return;
+      }
+
+      domain::Magazine* existing_magazine =
+          dynamic_cast<domain::Magazine*>(existing_title.get());
+      domain::Magazine* new_magazine =
+          dynamic_cast<domain::Magazine*>(title.get());
+
+      if (existing_magazine != nullptr && new_magazine != nullptr) {
+        existing_magazine->set_issn(new_magazine->issn());
+        existing_magazine->set_publication_name(
+            new_magazine->publication_name());
+        existing_magazine->set_volume(new_magazine->volume());
+        existing_magazine->set_issue_number(new_magazine->issue_number());
+        existing_magazine->set_category(new_magazine->category());
+
+        SaveAllToFile();
+        return;
+      }
+
+      domain::Thesis* existing_thesis =
+          dynamic_cast<domain::Thesis*>(existing_title.get());
+      domain::Thesis* new_thesis = dynamic_cast<domain::Thesis*>(title.get());
+
+      if (existing_thesis != nullptr && new_thesis != nullptr) {
+        existing_thesis->set_university(new_thesis->university());
+        existing_thesis->set_degree_level(new_thesis->degree_level());
+        existing_thesis->set_defense_year(new_thesis->defense_year());
+        existing_thesis->set_supervisor_name(new_thesis->supervisor_name());
+
+        SaveAllToFile();
+        return;
+      }
+
+      throw std::invalid_argument(
+          "Cannot update title because the title type changed.");
     }
   }
+
   titles_.push_back(std::move(title));
   SaveAllToFile();
 }
@@ -181,7 +260,7 @@ void JsonLibraryDataRepository::LoadAllFromFile() {
 
   // The load order matters here. Since Customers depends on Items
   // (BorrowRecords store pointers to Items) and Items depends on Titles, Titles
-  // must be load first, then Items, then Customers.
+  // must be loaded first, then Items, then Customers.
 
   LoadBooksFromFile(data);
   LoadJournalsFromFile(data);

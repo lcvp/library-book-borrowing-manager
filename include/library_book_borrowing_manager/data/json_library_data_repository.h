@@ -1,3 +1,9 @@
+// Library Book Borrowing Manager
+
+
+
+
+//
 // This program is free software: you can redistribute it and/or modify it under
 // the terms of the GNU General Public License as published by the Free Software
 // Foundation, either version 3 of the License, or (at your option) any later
@@ -22,6 +28,7 @@
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_DATA_JSON_LIBRARY_DATA_REPOSITORY_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_DATA_JSON_LIBRARY_DATA_REPOSITORY_H_
 
+#include <deque>
 #include <memory>
 #include <nlohmann/json.hpp>
 #include <string>
@@ -47,8 +54,8 @@ class JsonLibraryDataRepository
   void Save(const domain::Customer& customer) override;
   void RemoveCustomer(std::string id) override;
 
-  domain::Item GetItemById(std::string id) const override;
-  std::vector<domain::Item> GetAllItems() const override;
+  domain::Item* GetItemById(std::string id) override;
+  std::vector<domain::Item*> GetAllItems() override;
   void Save(const domain::Item& item) override;
   void RemoveItem(std::string id) override;
 
@@ -60,7 +67,7 @@ class JsonLibraryDataRepository
  private:
   std::string file_path_;
   std::vector<domain::Customer> customers_;
-  std::vector<domain::Item> items_;
+  std::deque<domain::Item> items_;
   std::vector<std::unique_ptr<domain::Title>> titles_;
   void LoadAllFromFile();
   void SaveAllToFile();
