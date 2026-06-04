@@ -15,9 +15,8 @@
 // customers_controller.h
 // -----------------------------------------------------------------------------
 //
-// This header file declares the JsonLibraryDataRepository class which
-// implements the LibraryDataRepository interface. Intended to stores and
-// retrieve all library data with JSON.
+// This header file declares the CustomersController class, which process user
+// inputs from the Manage Customer menu.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_CUSTOMERS_CONTROLLER_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_CUSTOMERS_CONTROLLER_H_
@@ -33,6 +32,8 @@ class CustomersController {
                       views::CustomersView& customers_view);
 
   void Run();
+  void UpdateCustomer();
+  void DeleteCustomer();
 
  private:
   service::LibraryManager& library_manager_;

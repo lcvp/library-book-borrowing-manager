@@ -15,9 +15,8 @@
 // register_customer_controller.h
 // -----------------------------------------------------------------------------
 //
-// This header file declares the JsonLibraryDataRepository class which
-// implements the LibraryDataRepository interface. Intended to stores and
-// retrieve all library data with JSON.
+// This header file declares the RegisterCustomerController class for processing
+// the RegisterCustomer menu option.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_REGISTER_CUSTOMER_CONTROLLER_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_CONTROLLERS_REGISTER_CUSTOMER_CONTROLLER_H_
