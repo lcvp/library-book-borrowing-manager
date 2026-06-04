@@ -1,3 +1,6 @@
+# Program save files
+library_data.json
+
 # The build/ directory and all its contents
 build/
 
