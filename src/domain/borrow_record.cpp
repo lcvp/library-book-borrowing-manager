@@ -28,9 +28,7 @@ BorrowRecord::BorrowRecord(
       start_date_(start_date),
       due_date_(due_date),
       return_date_(return_date),
-      item_(item) {
-  item->set_is_available(false);
-}
+      item_(item) {}
 
 std::string BorrowRecord::id() const { return id_; }
 
@@ -84,7 +82,6 @@ BorrowRecord::Status BorrowRecord::GetStatus() const {
 
 void BorrowRecord::Return(std::chrono::system_clock::time_point current_date) {
   set_return_date(current_date);
-  item()->set_is_available(true);
 }
 
 void BorrowRecord::ExtendLoan(std::chrono::system_clock::time_point to_date) {
