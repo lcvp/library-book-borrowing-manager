@@ -20,6 +20,7 @@
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_VIEWS_CONSOLE_VIEW_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_VIEWS_CONSOLE_VIEW_H_
 
+#include <chrono>
 #include <map>
 #include <string>
 #include <vector>
@@ -51,6 +52,13 @@ void PrintList(std::map<int, std::string> entries);
 void WaitForInput(std::string message);
 
 int GetTerminalLength();
+
+void PrintWrapped(std::string text);
+
+std::string TimePointToString(std::chrono::system_clock::time_point time_point);
+
+std::chrono::system_clock::time_point StringToTimePoint(
+    std::string date_month_year);
 
 }  // namespace library_book_borrowing_manager::presentation::views
 
