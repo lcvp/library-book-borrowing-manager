@@ -15,17 +15,33 @@
 // checkin_view.h
 // -----------------------------------------------------------------------------
 //
-// This header file declares the JsonLibraryDataRepository class which
-// implements the LibraryDataRepository interface. Intended to stores and
-// retrieve all library data with JSON.
+// This header file declares the CheckinView class for rendering menus related
+// to the item checkin process.
 
 #ifndef LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_VIEWS_CHECKIN_VIEW_H_
 #define LIBRARY_BOOK_BORROWING_MANAGER_PRESENTATION_VIEWS_CHECKIN_VIEW_H_
+
+#include "library_book_borrowing_manager/domain/customer.h"
 
 namespace library_book_borrowing_manager::presentation::views {
 
 class CheckinView {
  public:
+  std::string PrintCustomerList(
+      std::vector<domain::Customer> customer_list) const;
+  std::string PrintBorrowRecordList(
+      std::vector<domain::BorrowRecord> borrow_record_list,
+      std::string selected_customer_id,
+      std::vector<std::string> selected_borrow_record_ids) const;
+  void PrintTotalOwedFee(double total_owed_fee) const;
+
+  std::string CustomerToString(domain::Customer customer) const;
+  std::string BorrowRecordToString(domain::BorrowRecord borrow_record) const;
+
+  std::vector<std::string> CustomerListToString(
+      std::vector<domain::Customer> customer_list) const;
+  std::vector<std::string> BorrowRecordListToString(
+      std::vector<domain::BorrowRecord> borrow_record_list) const;
 };
 
 }  // namespace library_book_borrowing_manager::presentation::views
